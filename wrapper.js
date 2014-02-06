@@ -17,8 +17,6 @@ exports.init = function(root, config) {
 
     compile: function(path, options, cb) {
 
-      console.log(path);
-
       var success = function(css) {
         cb(css);
       };

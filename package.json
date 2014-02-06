@@ -2,7 +2,7 @@
   "name": "ss-sass",
   "author": "Kirill Chernyshov <delaguardo@gmail.org>",
   "description": "SASS client styles wrapper for SocketStream 0.3.x",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./wrapper.js",
   "repository": {
     "type": "git",
