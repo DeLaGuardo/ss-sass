@@ -28,7 +28,7 @@ exports.init = function(root, config) {
         console.log(err);
       };
 
-      sass.renderSync({
+      sass.render({
         file: path,
         success: success,
         error: error
