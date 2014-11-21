@@ -26,11 +26,14 @@ exports.init = function(root, config) {
         console.log(err);
       };
 
-      sass.render({
+      var opts = {
         file: path,
         success: success,
         error: error
-      });
+      };
+      for(var n in options) { opts[n] = opts[n] || config[n]; }
+      opts.outputStyle = options.compress? "compressed":"nested";
+      sass.render(opts);
     }
   };
 };
