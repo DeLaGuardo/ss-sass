@@ -21,11 +21,10 @@ exports.init = function(root, config) {
                 file: path
             };
 
-            for(var n in options) {
+            for(var n in config) {
                 opts[n] = opts[n] || config[n];
             }
 
-            opts.outputStyle = options.compress? "compressed" : "nested";
             sass.render(opts, function(error, result) {
                 if (error) {
                     var message = '! - Unable to compile Sass file %s into CSS';
@@ -34,8 +33,9 @@ exports.init = function(root, config) {
                     console.log(error.column);
                     console.log(error.message);
                     console.log(error.line);
+                } else {
+                    cb(result.css.toString());
                 }
-                cb(result.css.toString());
             });
         }
     };
