@@ -9,3 +9,7 @@ Add `ss-sass` to your application's `package.json` file and then add this line t
 
     ss.client.formatters.add(require('ss-sass'));
 
+[Options](https://github.com/sass/node-sass#options) for node-sass wrapper around libsass can be passed with second argument:
+
+    ss.client.formatters.add(require('ss-sass'), {outputStyle: "nested"})
+
