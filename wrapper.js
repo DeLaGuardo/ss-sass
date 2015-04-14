@@ -5,35 +5,38 @@ var fs = require('fs'),
 
 exports.init = function(root, config) {
 
-  return {
+    return {
 
-    name: 'Sass',
+        name: 'Sass',
 
-    extensions: ['sass', 'scss'],
+        extensions: ['sass', 'scss'],
 
-    assetType: 'css',
+        assetType: 'css',
 
-    contentType: 'text/css',
+        contentType: 'text/css',
 
-    compile: function(path, options, cb) {
+        compile: function(path, options, cb) {
 
-      var success = function(css) {
-        cb(css);
-      };
+            var opts = {
+                file: path
+            };
 
-      var error = function (err) {
-        console.log('! - Unable to compile Sass file %s into CSS', path);
-        console.log(err);
-      };
+            for(var n in options) {
+                opts[n] = opts[n] || config[n];
+            }
 
-      var opts = {
-        file: path,
-        success: success,
-        error: error
-      };
-      for(var n in options) { opts[n] = opts[n] || config[n]; }
-      opts.outputStyle = options.compress? "compressed":"nested";
-      sass.render(opts);
-    }
-  };
+            opts.outputStyle = options.compress? "compressed" : "nested";
+            sass.render(opts, function(error, result) {
+                if (error) {
+                    var message = '! - Unable to compile Sass file %s into CSS';
+                    console.log(String.prototype.hasOwnProperty('red') && message.red || message, path);
+                    console.log(error.status);
+                    console.log(error.column);
+                    console.log(error.message);
+                    console.log(error.line);
+                }
+                cb(result.css.toString());
+            });
+        }
+    };
 };
