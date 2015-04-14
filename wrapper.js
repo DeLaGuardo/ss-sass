@@ -29,10 +29,9 @@ exports.init = function(root, config) {
                 if (error) {
                     var message = '! - Unable to compile Sass file %s into CSS';
                     console.log(String.prototype.hasOwnProperty('red') && message.red || message, path);
-                    console.log(error.status);
-                    console.log(error.column);
                     console.log(error.message);
-                    console.log(error.line);
+                    console.log("Error in file: " + error.file);
+                    console.log("Position: " + error.line + ":" + error.column);
                 } else {
                     cb(result.css.toString());
                 }
