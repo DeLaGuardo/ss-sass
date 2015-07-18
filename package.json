@@ -3,6 +3,7 @@
   "author": "Kirill Chernyshov <delaguardo@gmail.org>",
   "description": "SASS client styles wrapper for SocketStream 0.3.x",
   "version": "0.0.5",
+  "license": "MIT",
   "main": "./wrapper.js",
   "repository": {
     "type": "git",
@@ -12,7 +13,7 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "node-sass": "3.0.0-beta.5"
+    "node-sass": "3.2.0"
   },
   "devDependencies": {}
 }
